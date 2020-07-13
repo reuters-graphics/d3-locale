@@ -21,4 +21,12 @@ describe('Test D3Locale', function() {
     const date = new Date('2020-07-13');
     expect(locale.formatTime('%b %d')(date)).to.be('Jul 13');
   });
+
+  it('Should allow overriding specifiers', async function() {
+    const locale = new D3Locale('pt');
+    expect(locale.format('$')(12.2)).to.be('R$12,2');
+    // Portuguese in Portugal
+    locale.formatSpecifier = { currency: ['', '€'] };
+    expect(locale.format('$')(12.2)).to.be('12,2€');
+  });
 });

@@ -36,4 +36,11 @@ locale.formatTime('%B %d')(new Date('2020-07-13'));
 // ... or with an axis
 d3.axisBottom(xScale)
   .tickFormat(locale.formatTime('%b. %d, %Y'));
+
+// Can also override a part of a locale specifier...
+locale.format('$')(12.2)
+// R$12,2
+locale.formatSpecifier = { currency: ['', '€'] };
+locale.format('$')(12.2)
+// '12,2€'
 ```
