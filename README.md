@@ -2,6 +2,20 @@
 
 # @reuters-graphics/d3-locale
 
+Easy translation for d3 charting.
+
+Covers the following locales:
+- `en`: US English
+- `de`: German
+- `es`: Spanish
+- `fr`: French
+- `it`: Italian
+- `ja`: Japanese
+- `pt`: Portuguese
+- `zh`: Chinese
+
+### Install
+
 ```
 $ yarn add @reuters-graphics/d3-locale d3-format d3-time-format
 ```
