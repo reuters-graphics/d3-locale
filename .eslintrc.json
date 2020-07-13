@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": "@hobbes7878/eslint-config",
+  "extends": "@reuters-graphics/eslint-config",
   "env": {
     "browser": false,
     "node": true,

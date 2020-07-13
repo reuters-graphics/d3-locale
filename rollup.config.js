@@ -5,7 +5,7 @@ import resolve from '@rollup/plugin-node-resolve';
 const plugins = [
   resolve({ preferBuiltins: true, modulesOnly: true }),
   json(),
-  externals({ deps: true }),
+  externals(),
 ];
 
 const output = {
@@ -13,8 +13,14 @@ const output = {
   format: 'cjs',
 };
 
+const external = [
+  'd3-format',
+  'd3-time-format',
+];
+
 export default {
   input: 'lib/index.js',
   output,
+  external,
   plugins,
 };
