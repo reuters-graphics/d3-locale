@@ -9,7 +9,7 @@
   "scripts": {
     "prepublishOnly": "npm run build && npm run test",
     "build": "rollup --config rollup.config.js",
-    "test": "mocha"
+    "test": "yarn build && mocha"
   },
   "devDependencies": {
     "@reuters-graphics/eslint-config": "^0.0.2",

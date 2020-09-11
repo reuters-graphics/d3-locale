@@ -44,3 +44,19 @@ locale.formatSpecifier = { currency: ['', '€'] };
 locale.format('$')(12.2)
 // '12,2€'
 ```
+
+### Extra features
+
+##### Japanese/Chinese myriad groupings
+
+There is special handling for decimal notation with an SI prefix (`s` format) in Japanese and Chinese in order to handle grouping by [myriads](https://en.wikipedia.org/wiki/Japanese_numerals#Large_numbers) rather than thousands.
+
+```javascript
+const locale = new D3Locale('ja');
+locale.format(',s')(16000);
+// 1.6万
+locale.format(',s')(25000000);
+// 2,500万
+locale.format('$,s')(1233000);
+// 123.3万円
+```
