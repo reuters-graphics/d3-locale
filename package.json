@@ -1,6 +1,6 @@
 {
   "name": "@reuters-graphics/d3-locale",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "D3 localization shortcut for Reuters graphics",
   "main": "dist/index.js",
   "author": "Jon McClure <jon.r.mcclure@gmail.com>",
