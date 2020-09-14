@@ -33,6 +33,7 @@ describe('Test D3Locale', function() {
   it('Should handle Japanese/Chinese myriad groupings with SI prefix', async function() {
     const locale = new D3Locale('ja');
     expect(locale.format(',')(1233)).to.be('1,233');
+    expect(locale.format(',')(12330)).to.be('12,330');
     expect(locale.format('~s')(10000)).to.be('1万');
     expect(locale.format('s')(16000)).to.be('1.6万');
     expect(locale.format('~s')(12000000)).to.be('1200万');
