@@ -48,7 +48,7 @@ locale.format('$')(12.2)
 
 ### Extra features
 
-##### AP-style dates
+#### AP-style dates
 
 You can set the formatter to use AP-style month abbreviations in English.
 
@@ -61,7 +61,7 @@ locale.formatTime('%b %d, %Y')(new Date('2020-01-13'));
 // Jan. 13, 2020
 ```
 
-##### Time multiformat
+#### Time multiformat
 
 By default, d3 time scales use a [multi-scale time format](https://github.com/d3/d3-time-format#d3-time-format). You can recreate this using your locale and pass it to an axis' `tickFormat` method.
 
@@ -94,7 +94,7 @@ locale.timeMultiFormat({ month: '%b', week: '%b %-e' })(new Date('2020-02-02'));
 // Feb. 2
 ```
 
-##### Japanese/Chinese myriad groupings
+#### Japanese/Chinese myriad groupings
 
 There is special handling for decimal notation with an SI prefix (`s` format) in Japanese and Chinese in order to handle grouping by [myriads](https://en.wikipedia.org/wiki/Japanese_numerals#Large_numbers) rather than thousands.
 
