@@ -5,6 +5,7 @@
 Easy translation for d3 charting.
 
 Covers the following locales:
+
 - `en`: US English
 - `de`: German
 - `es`: Spanish
@@ -17,7 +18,7 @@ Covers the following locales:
 ### Install
 
 ```
-$ yarn add @reuters-graphics/d3-locale d3-format d3-time-format
+yarn add @reuters-graphics/d3-locale d3-format d3-time-format
 ```
 
 ### Use
@@ -43,6 +44,14 @@ locale.format('$')(12.2)
 locale.formatSpecifier = { currency: ['', '€'] };
 locale.format('$')(12.2)
 // '12,2€'
+
+// Use AP-style dates in English
+const locale = new D3Locale('en');
+locale.apStyle();
+locale.formatTime('%b %d, %Y')(new Date('2020-03-13'));
+// March 13, 2020
+locale.formatTime('%b %d, %Y')(new Date('2020-01-13'));
+// Jan. 13, 2020
 ```
 
 ### Extra features
