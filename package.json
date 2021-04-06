@@ -26,9 +26,7 @@
   },
   "peerDependencies": {
     "d3-format": "*",
+    "d3-time": "*",
     "d3-time-format": "*"
-  },
-  "dependencies": {
-    "d3-time": "^2.0.0"
   }
 }

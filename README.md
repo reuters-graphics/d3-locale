@@ -18,7 +18,7 @@ Covers the following locales:
 ### Install
 
 ```
-yarn add @reuters-graphics/d3-locale d3-format d3-time-format
+yarn add @reuters-graphics/d3-locale d3-format d3-time-format d3-time
 ```
 
 ### Use
