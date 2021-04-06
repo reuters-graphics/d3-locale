@@ -3,6 +3,7 @@ const D3Locale = require('../dist');
 
 const deTimeFormat = require('../locales/de/timeFormat.json');
 const deFormat = require('../locales/de/format.json');
+const d3 = require('d3');
 
 describe('Test D3Locale', function() {
   it('Should get format objects', async function() {
@@ -56,5 +57,18 @@ describe('Test D3Locale', function() {
     expect(locale.formatTime('%b %d, %Y')(new Date('2020-07-13'))).to.be('July 13, 2020');
     expect(locale.formatTime('%b %d, %Y')(new Date('2020-01-13'))).to.be('Jan. 13, 2020');
     expect(locale.formatTime('%b %d, %Y')(new Date('2020-09-13'))).to.be('Sept. 13, 2020');
+  });
+
+  it('Should create a time multiformat', async function() {
+    const locale = new D3Locale('en');
+    locale.apStyle();
+    const formatter = locale.timeMultiFormat();
+    expect(formatter(new Date('2020-01-01'))).to.be('2020');
+    expect(formatter(new Date('2020-02-01'))).to.be('February');
+    expect(formatter(new Date('2020-02-02'))).to.be('Feb. 02');
+    const customizedFormatter = locale.timeMultiFormat({ month: '%b', week: '%b %-e' });
+    expect(customizedFormatter(new Date('2020-01-01'))).to.be('2020');
+    expect(customizedFormatter(new Date('2020-02-01'))).to.be('Feb.');
+    expect(customizedFormatter(new Date('2020-02-02'))).to.be('Feb. 2');
   });
 });

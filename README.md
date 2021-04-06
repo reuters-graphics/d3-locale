@@ -44,8 +44,15 @@ locale.format('$')(12.2)
 locale.formatSpecifier = { currency: ['', '€'] };
 locale.format('$')(12.2)
 // '12,2€'
+```
 
-// Use AP-style dates in English
+### Extra features
+
+##### AP-style dates
+
+You can set the formatter to use AP-style month abbreviations in English.
+
+```javascript
 const locale = new D3Locale('en');
 locale.apStyle();
 locale.formatTime('%b %d, %Y')(new Date('2020-03-13'));
@@ -54,7 +61,38 @@ locale.formatTime('%b %d, %Y')(new Date('2020-01-13'));
 // Jan. 13, 2020
 ```
 
-### Extra features
+##### Time multiformat
+
+By default, d3 time scales use a [multi-scale time format](https://github.com/d3/d3-time-format#d3-time-format). You can recreate this using your locale and pass it to an axis' `tickFormat` method.
+
+```javascript
+const locale = new D3Locale('en');
+
+const timeScale = d3.timeScale().domain([ /* ... */ ]);
+
+d3.axisBottom(timeScale)
+  .tickFormat(locale.timeMultiFormat());
+
+// Example formats...
+locale.timeMultiFormat()(new Date('2020-01-01'));
+// 2020
+locale.timeMultiFormat()(new Date('2020-02-01'));
+// February
+locale.timeMultiFormat()(new Date('2020-02-02'));
+// Feb 02
+```
+
+You can also customize the component formatters used in the multi-scale time formatter. For example, our preferred formatter for AP-style date series:
+
+```javascript
+locale.apStyle();
+locale.timeMultiFormat({ month: '%b', week: '%b %-e' })(new Date('2020-01-01'));
+// 2020
+locale.timeMultiFormat({ month: '%b', week: '%b %-e' })(new Date('2020-02-01'));
+// Feb.
+locale.timeMultiFormat({ month: '%b', week: '%b %-e' })(new Date('2020-02-02'));
+// Feb. 2
+```
 
 ##### Japanese/Chinese myriad groupings
 
