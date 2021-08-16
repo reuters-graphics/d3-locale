@@ -12,6 +12,11 @@
     "import": "./dist/index.js",
     "require": "./dist/index.cjs"
   },
+  "files": [
+    "dist/**/*.js",
+    "lib/**/*.js",
+    "locales/**/*.json"
+  ],
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
