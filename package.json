@@ -2,10 +2,19 @@
   "name": "@reuters-graphics/d3-locale",
   "version": "0.2.1",
   "description": "D3 localization shortcut for Reuters graphics",
-  "main": "dist/index.js",
   "author": "Jon McClure <jon.r.mcclure@gmail.com>",
   "license": "MIT",
   "private": false,
+  "type": "module",
+  "module": "dist/index.js",
+  "main": "dist/index.cjs",
+  "exports": {
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
   "scripts": {
     "prepublishOnly": "npm run build && npm run test",
     "build": "rollup --config rollup.config.js",
@@ -15,9 +24,9 @@
     "@reuters-graphics/eslint-config": "^0.0.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^8.4.0",
-    "d3": "^6.6.2",
-    "d3-format": "^1.4.4",
-    "d3-time-format": "^2.2.3",
+    "d3": "^7.0.0",
+    "d3-format": "^3.0.1",
+    "d3-time-format": "^4.0.0",
     "eslint": "6.8.0",
     "expect.js": "^0.3.1",
     "mocha": "^8.0.1",

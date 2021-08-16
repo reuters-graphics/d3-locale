@@ -1,9 +1,9 @@
-const expect = require('expect.js');
-const D3Locale = require('../dist');
+import D3Locale from './../dist/index.js';
+import expect from 'expect.js';
+import { readFileSync } from 'fs';
 
-const deTimeFormat = require('../locales/de/timeFormat.json');
-const deFormat = require('../locales/de/format.json');
-const d3 = require('d3');
+const deFormat = JSON.parse(readFileSync(new URL('../locales/de/format.json', import.meta.url)));
+const deTimeFormat = JSON.parse(readFileSync(new URL('../locales/de/timeFormat.json', import.meta.url)));
 
 describe('Test D3Locale', function() {
   it('Should get format objects', async function() {

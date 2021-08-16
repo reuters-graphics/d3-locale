@@ -8,19 +8,25 @@ const plugins = [
   externals(),
 ];
 
-const output = {
-  dir: 'dist',
-  format: 'cjs',
-};
-
 const external = [
   'd3-format',
   'd3-time-format',
 ];
 
-export default {
+export default [{
   input: 'lib/index.js',
-  output,
+  output: {
+    file: 'dist/index.js',
+    format: 'es',
+  },
   external,
   plugins,
-};
+}, {
+  input: 'lib/index.js',
+  output: {
+    file: 'dist/index.cjs',
+    format: 'cjs',
+  },
+  external,
+  plugins,
+}];
