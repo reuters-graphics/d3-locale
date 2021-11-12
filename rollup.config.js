@@ -1,32 +1,32 @@
-import externals from 'rollup-plugin-node-externals';
 import json from '@rollup/plugin-json';
-import resolve from '@rollup/plugin-node-resolve';
+import pkg from './package.json';
+import { terser } from 'rollup-plugin-terser';
 
-const plugins = [
-  resolve({ preferBuiltins: true, modulesOnly: true }),
-  json(),
-  externals(),
-];
-
-const external = [
-  'd3-format',
-  'd3-time-format',
-];
-
-export default [{
+const config = [{
   input: 'lib/index.js',
+  external: Object.keys(pkg.dependencies || {}).filter(key => /^d3-/.test(key)),
+  output: {
+    file: 'dist/d3-locale.min.js',
+    name: 'd3',
+    format: 'umd',
+    extend: true,
+    banner: `// ${pkg.name} v${pkg.version} Copyright ${(new Date()).getFullYear()} ${pkg.author}`,
+  },
+  plugins: [
+    terser(),
+    json(),
+  ],
+}, {
+  input: 'lib/index.js',
+  external: Object.keys(pkg.dependencies || {}).filter(key => /^d3-/.test(key)),
   output: {
     file: 'dist/index.js',
     format: 'es',
+    banner: `// ${pkg.name} v${pkg.version} Copyright ${(new Date()).getFullYear()} ${pkg.author}`,
   },
-  external,
-  plugins,
-}, {
-  input: 'lib/index.js',
-  output: {
-    file: 'dist/index.cjs',
-    format: 'cjs',
-  },
-  external,
-  plugins,
+  plugins: [
+    json(),
+  ],
 }];
+
+export default config;

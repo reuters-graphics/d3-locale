@@ -7,10 +7,14 @@
   "private": false,
   "type": "module",
   "module": "dist/index.js",
-  "main": "dist/index.cjs",
+  "main": "dist/index.js",
+  "jsdelivr": "dist/d3-locale.min.js",
+  "unpkg": "dist/d3-locale.min.js",
   "exports": {
-    "import": "./dist/index.js",
-    "require": "./dist/index.cjs"
+    ".": {
+      "umd": "./dist/d3-locale.min.js",
+      "default": "./dist/index.js"
+    }
   },
   "files": [
     "dist/**/*.js",
@@ -18,7 +22,7 @@
     "locales/**/*.json"
   ],
   "engines": {
-    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+    "node": ">=12"
   },
   "scripts": {
     "prepublishOnly": "npm run build && npm run test",
@@ -36,11 +40,12 @@
     "expect.js": "^0.3.1",
     "mocha": "^8.0.1",
     "rollup": "^2.21.0",
-    "rollup-plugin-node-externals": "^2.2.0"
+    "rollup-plugin-node-externals": "^2.2.0",
+    "rollup-plugin-terser": "^7.0.2"
   },
-  "peerDependencies": {
-    "d3-format": "*",
-    "d3-time": "*",
-    "d3-time-format": "*"
+  "dependencies": {
+    "d3-format": "3",
+    "d3-time": "3",
+    "d3-time-format": "4"
   }
 }
